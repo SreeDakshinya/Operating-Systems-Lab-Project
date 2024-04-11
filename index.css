@@ -1,0 +1,31 @@
+/* @import url(‘https://fonts.googleapis.com/css?family=Dancing+Script’); */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.contain{
+    /* background-image:linear-gradient(45deg, rgb(147, 89, 99) , rgb(50, 45, 45)); */
+    background-image: url('https://scientips.com/wp-content/uploads/2020/07/7.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#nav{
+    background-color:rgb(0, 0, 112);
+    color:white;
+    height: 100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    /* font-family: ; */
+}
+
+.card:hover{
+  box-shadow: 5px 5px 5px gray; 
+  transition:transform 0.5s;
+  transform: scale(1.05);
+}
