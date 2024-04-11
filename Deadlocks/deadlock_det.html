@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Deadlock Detection</title>
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: serif;
+      background: #0f0d0e00;
+      color: rgba(25, 14, 222, 0.906)
+    }
+
+    h1 {
+      text-align: center;
+      
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #454545;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .success {
+      color: #2f2fe9c7;
+      font-weight:400;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .input-container {
+      margin-bottom: 10px;
+      text-align: center;
+      width: 500px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"], input[type="number"], select {
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #19182458;
+      font-family: serif;
+      font-size: x-large;
+    }
+    .button {
+        background-color: #382fe999;
+        color: #0f0d0e00;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        font-family: serif;
+        font-weight: 550;
+      }
+    .button1 {
+        background-color: #0f0d0e; 
+        color: #FCBA28; 
+        border-radius: 5px;
+        border: 2px solid #4ffc2897;
+      }
+    
+    .button1:hover {
+       background-color: #FCBA28;
+       color: #0f0d0e;
+    }
+    nav {
+      background-color: #0f0d0e;
+      height: 90px;
+      display:flex;
+      justify-content:space-between;
+      background: #4ffc2897;
+      position:relative;
+    }
+      
+    ul {
+      list-style: none;
+      margin-right: 4%;
+      padding: 0;
+      display:flex;
+      justify-content:right;
+      align-items: center;
+      height: 100%;
+    }
+    
+    li {
+      margin: 0 20px;
+    
+    }
+    
+    a {
+      color: #FCBA28;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight:bold;
+      text-transform: uppercase;
+    }
+    
+    .table-container {
+      display: flex;
+      justify-content: space-between;
+      width: 80%; 
+      margin: auto;
+    }
+    
+    #alloc{
+        margin-right: 10px;
+    }
+    
+    *{
+      border: 0;
+      margin: 0;
+  }
+    
+
+    #output {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+  </head>
+    <body>
+        <h1> Deadlock Detection</h1>
+        <div class="input-container">
+            <label for="available">Available:</label>
+            <input type="text" id="available">
+        </div>
+
+        <div class="table-container">
+        <table id="alloc">
+            <caption>Allocated</caption>
+            <thead>
+                <tr>
+                    <th>Process No.</th>
+                    <th>Resource 1</th>
+                    <th>Resource 2</th>
+                    <th>Resource 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>P0</td>
+                  <td><input type="number" min="0"></td>
+                  <td><input type="number" min="0"></td>
+                  <td><input type="number" min="0"></td>
+                </tr>
+                <tr>
+                    <td>P1</td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                  </tr>
+                  <tr>
+                    <td>P2</td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                  </tr>
+                  <tr>
+                    <td>P3</td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                  </tr>
+                  <tr>
+                    <td>P4</td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                  </tr>
+        </table>
+
+        <table id="request">
+            <caption>Requested</caption>
+            <thead>
+                <tr>
+                    <th>Process No.</th>
+                    <th>Resource 1</th>
+                    <th>Resource 2</th>
+                    <th>Resource 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>P0</td>
+                  <td><input type="number" min="0"></td>
+                  <td><input type="number" min="0"></td>
+                  <td><input type="number" min="0"></td>
+                </tr>
+                <tr>
+                    <td>P1</td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                  </tr>
+                  <tr>
+                    <td>P2</td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                  </tr>
+                  <tr>
+                    <td>P3</td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                  </tr>
+                  <tr>
+                    <td>P4</td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                    <td><input type="number" min="0"></td>
+                  </tr>
+        </table>
+    </div>
+          <button id="simulate-button">Check for Deadlock</button>
+        
+          <div id="output"></div>
+    <script>
+        document.getElementById('simulate-button').addEventListener('click', simulate)
+        function simulate(){
+            const pre_available = document.getElementById('available');
+            const pre_alloc = document.querySelectorAll('#alloc tbody tr');
+            const pre_request = document.querySelectorAll('#request tbody tr');
+
+            const alloc = Array.from(pre_alloc, row =>
+        Array.from(row.querySelectorAll('input[type="number"]'), input => Number(input.value))
+      );
+      const request = Array.from(pre_request, row =>
+        Array.from(row.querySelectorAll('input[type="number"]'), input => Number(input.value))
+      );
+      const available = pre_available.value.split(' ').map(Number);
+            let res_no, proc_no, done, skip, sum;
+            proc_no = alloc.length;
+            res_no = alloc[0].length;
+            let completed = new Array(proc_no).fill(0);
+            done=0;
+            skip=0;
+            
+            let i=0;
+                while(true)
+                {   
+                    if (done==proc_no || skip==proc_no)
+                        break;
+                    if (completed[i]==1)
+                    {   skip++;
+                        i++;
+                        continue;
+                    }
+                    let sum=0;
+                    for(let j=0;j<res_no;j++)
+                        if(request[i][j]<=available[j])
+                            sum++;
+                    if(sum==res_no)
+                        {   skip=0;
+                            done++;
+                            completed[i]=1;
+                            showSuccess("Process P" + i +"has been executed. \n");
+                            showSuccess("The updated values of the available resources are: \n");
+                            for(let j=0;j<res_no;j++)
+                                {available[j]+=alloc[i][j];
+                                showSuccess(available[j]);}
+                            showSuccess("\n");
+                        }
+                    else skip++;
+                    i=(i+1)%proc_no;
+                }
+                if(done==proc_no)
+                    showSuccess("The system is in a safe state. \n");
+                else
+                    showFail("The system is in a deadlock status. \n");
+                }
+        function showSuccess(message) {
+                const output = document.getElementById('output');
+                output.innerHTML += message + '<br>';
+                output.className = 'success';
+                }
+        function showFail(message) {
+                const output = document.getElementById('output');
+                output.innerHTML += message + '<br>';
+                output.className = 'error';
+                }
+</script>
+</body>
+</html>
