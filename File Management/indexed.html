@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linked File Allocation</title>
+<link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+  <div class = "container">
+  <h2>Indexed File Allocation</h2>
+  <form id="fileForm">
+    <label for="totalBlocks">Total Number of Blocks:</label>
+    <input type="number" id="totalBlocks" name="totalBlocks" required><br><br>
+  
+    <label for="fileName">File Name:</label>
+    <input type="text" id="fileName" name="fileName" required><br><br>
+  
+    <label for="indexBlock">Index Block:</label>
+    <input type="number" id="indexBlock" name="indexBlock" required><br><br>
+  
+    <label for="blocksRequired">Blocks Required:</label>
+    <input type="number" id="blocksRequired" name="blocksRequired" required><br><br>
+  
+    <label for="blockNumbers">Block Numbers (comma-separated):</label>
+    <input type="text" id="blockNumbers" name="blockNumbers" required><br><br>
+    <button type="submit">Add File</button>
+  </form>
+  <div id="output"></div>
+  <button type="button" id="finishBtn">Finish</button>
+
+  </div>
+  
+
+  <script src="file_management.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Allocation</title>
+  <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Linked File Allocation</h2>
+    <form id="fileForm">
+      <label for="totalBlocks">Total number of blocks:</label>
+      <input type="number" id="totalBlocks" required>
+      <label for="fileName">File name:</label>
+      <input type="text" id="fileName" required>
+      <label for="blocksRequired">Number of blocks required:</label>
+      <input type="number" id="blocksRequired" required>
+      <label for="blockNumbers">Block numbers (comma-separated):</label>
+      <input type="text" id="blockNumbers" required>
+      <button type="submit">Add File</button>
+    </form>
+    <div id="output"></div>
+    <button id="finishBtn">Finish</button>
+  </div>
+  <script src="script1.js"></script>
+</body>
+</html>
