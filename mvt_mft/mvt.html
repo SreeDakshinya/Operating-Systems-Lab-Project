@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/MVT_MFT/css/base.css">
+    <link rel="stylesheet" href="mvt.css">
+    <style>
+    </style>
+    <title>MVT</title>
+
+</head>
+
+<body>
+    
+	<div class="container">
+        <h1>MFT MEMORY MANAGEMENT TECHNIQUE</h1>
+        <form id="memoryAllocationForm">
+            <label for="totalMemorySize">Enter total memory size:</label>
+            <input type="number" id="totalMemorySize" required>
+            <br>
+            <label for="numProcesses">Enter number of processes:</label>
+            <input type="number" id="numProcesses" required>
+            <br>
+            <div id="memoryRequirements">
+            </div>
+            <br>
+            <button type ="submit" class="btn btn-primary">Allocate Memory</button>
+        </form>
+        <div id="memoryBlocks"></div>
+        <div id="output"></div>
+    </div>
+    <script src="mvt.js"></script>
+</body>
+
+</html>

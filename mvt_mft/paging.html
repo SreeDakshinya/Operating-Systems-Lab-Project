@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paging</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="paging.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Paging</h1>
+        <label for="numPages">Number of Pages:</label>
+        <input type="number" id="numPages">
+        <label for="framesPerPage">Frames per Page:</label>
+        <input type="number" id="framesPerPage">
+        <label for="pageSize">Page Size (in bytes):</label>
+        <input type="number" id="pageSize">
+        <h2>Logical Address</h2>
+        <label for="page">Page:</label>
+        <input type="number" id="page">
+        <label for="frame">Frame:</label>
+        <input type="number" id="frame">
+        <label for="offset">Offset:</label>
+        <input type="number" id="offset">
+        <button onclick="translateAddress()">Translate Address</button>
+        <div id="output"></div>
+    </div>
+    <script src="paging.js"></script>
+</body>
+</html>
+
+
